@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Arka plan kaydırma animasyonu */
+  @keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  .animate-scroll { animation: scroll 20s linear infinite; }
+
+  /* Kart başlıkları için sadece Mavi tonlarında parlayan geçiş */
+  @keyframes blue-pulse {
+    0%, 100% { color: #3b82f6; text-shadow: 0 0 10px #3b82f6; } /* Parlak Mavi */
+    50% { color: #1e40af; text-shadow: 0 0 5px #1e40af; }      /* Koyu Lacivert */
+  }
+  .animate-blue-pulse {
+    animation: blue-pulse 3s ease-in-out infinite;
+  }
+
+  /* Teklif Al kutusu için su dolma efekti (Sadece Mavi tonları) */
+  @keyframes blue-water {
+    0%, 100% { height: 0%; background: #1e3a8a; } /* Koyu Lacivert */
+    50% { height: 45%; background: #3b82f6; }      /* Parlak Mavi */
+  }
+  .animate-blue-water {
+    animation: blue-water 8s ease-in-out infinite;
+  }
+
+  /* Teklif Al kutusunun kenarları için Mavi parlama */
+  @keyframes border-glow-blue {
+    0%, 100% { 
+      border-color: #3b82f6; 
+      box-shadow: 0 0 15px #3b82f6;
+    }
+    50% { 
+      border-color: #1e40af; 
+      box-shadow: 0 0 25px #1e40af;
+    }
+  }
+  .animate-border-blue {
+    animation: border-glow-blue 3s ease-in-out infinite;
+    border-width: 4px;
+  }
+}
+
+/* Temel ayarlar */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+@layer utilities {
+  /* RGB efekti - Kod kutusu içindeki yazılar için */
+  @keyframes rgb-text {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  .animate-rgb-text {
+    animation: rgb-text 5s linear infinite;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 100%;
+  }
+}
+@layer utilities {
+  @keyframes text-fill-up {
+    0%, 100% { background-size: 100% 0%; }
+    50% { background-size: 100% 100%; }
+  }
+  .animate-text-fill-up {
+    animation: text-fill-up 8s ease-in-out infinite;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+}
+@layer utilities {
+  /* Dalga hareketi */
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-wave {
+    animation: wave-move 5s linear infinite;
+  }
+
+  /* Yazının alttan dolması */
+  @keyframes text-fill-up {
+    0%, 100% { background-size: 100% 0%; }
+    50% { background-size: 100% 100%; }
+  }
+  .animate-text-fill-up {
+    animation: text-fill-up 8s ease-in-out infinite;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+}
+@layer utilities {
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes wave-rise {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .wave-animation {
+    animation: wave-move 3s linear infinite;
+  }
+  .wave-rise-animation {
+    animation: wave-rise 6s ease-in-out infinite;
+  }
+}
+@layer utilities {
+  @keyframes loading {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+}
+/* Teklif Al Kutusu Dalga Animasyonları */
+@keyframes wave-move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-rise {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.wave-animation {
+  animation: wave-move 4s linear infinite;
+}
+
+.wave-rise-animation {
+  animation: wave-rise 6s ease-in-out infinite;
+}
+@layer utilities {
+  @keyframes slide-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  .animate-in { animation: slide-in 0.5s ease-out; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
